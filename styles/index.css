@@ -32,3 +32,20 @@ body{
     padding:20px 10px;
     border-top: none;
 }
+#filter_image{
+    display:flex;
+    width:40%;
+    margin:auto;
+    gap:40px;
+}
+#filter_image > select{
+    width:40%;
+    padding:10px 40px;
+    font-size: 20px;
+    background-color:rgb(145, 0, 0);
+    color:white;
+    border:none;
+    margin-bottom:30px;
+    border-radius: 20px;
+    cursor:pointer;
+}

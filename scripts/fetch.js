@@ -9,6 +9,28 @@ let searchImages = async (API, query) => {
     }
 }
 
+let sortImages = async (API, query, orderby) => {
+    try {
+        const url = `https://api.unsplash.com/search/photos/?query=${query}&per_page=30&client_id=${API}&order_by=${orderby}`;
+        let res = await fetch(url);
+        let data = await res.json();
+        return data;
+    } catch (err) {
+        console.log("this is my error : " + err);
+    }
+}
+let filterImages = async (API, query, filterby) => {
+    try {
+        const url = `https://api.unsplash.com/search/photos/?query=${query}&per_page=30&client_id=${API}&orientation=${filterby}`;
+        let res = await fetch(url);
+        let data = await res.json();
+        return data;
+    } catch (err) {
+        console.log("this is my error : " + err);
+    }
+}
+
+
 let append = (data, col1, col2, col3) => {
     col1.innerHTML = null;
     col2.innerHTML = null;
@@ -35,4 +57,4 @@ let append = (data, col1, col2, col3) => {
     })
 }
 
-export { searchImages, append };
+export { searchImages, append, sortImages, filterImages};

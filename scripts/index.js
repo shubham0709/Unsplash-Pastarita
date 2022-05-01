@@ -4,19 +4,8 @@ import navbar from "../components/navbar.js";
 document.getElementById("navbar").innerHTML = navbar();
 
 //importing searchImages function from ./scripts/fetch.js
-import { searchImages, append } from "./fetch.js";
+import { searchImages, append, sortImages, filterImages } from "./fetch.js";
 
-// let searchImages = async () => {
-//     let query = document.getElementById("query").value;
-//     try {
-//         const url = `https://api.unsplash.com/search/photos/?query=${query}&per_page=30&client_id=${API}`;
-//         let res = await fetch(url);
-//         let data = await res.json();
-//         console.log(data);
-//     } catch (err) {
-//         console.log("this is my error : " + err);
-//     }
-// }
 let col1 = document.getElementById("col1");
 let col2 = document.getElementById("col2");
 let col3 = document.getElementById("col3");
@@ -30,7 +19,6 @@ let search = async (e) => {
     }
 }
 
-
 document.getElementById('query').addEventListener('keydown', search);
 
 let categories = document.getElementById("categories").children;
@@ -39,6 +27,7 @@ console.log(categories);
 let searchByCategory = async (elem) => {
     console.log(elem.id)
     let query = elem.id;
+    document.getElementById("query").value = query;
     let data = await searchImages(API, query);
     append(data.results, col1, col2, col3);
 }
@@ -47,3 +36,29 @@ for (let elem of categories) {
         searchByCategory(elem);
     })
 }
+
+
+let orderBy = async (value) => {
+    console.log(value);
+    let query = document.getElementById("query").value;
+    let data = await sortImages(API, query, value);
+    append(data.results, col1, col2, col3);
+}
+
+let filterBy = async (value) => {
+    console.log(value);
+    let query = document.getElementById("query").value;
+    let data = await filterImages(API, query, value);
+    append(data.results, col1, col2, col3);
+}
+
+let order = document.getElementById("order_by");
+order.addEventListener('change', () => {
+    orderBy(order.value);
+})
+
+
+let orientation = document.getElementById("orientation");
+orientation.addEventListener('change', () => {
+    filterBy(orientation.value);
+})
