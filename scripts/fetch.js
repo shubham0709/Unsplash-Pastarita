@@ -10,8 +10,10 @@ let searchImages = async (API, query) => {
 }
 
 let append = (data, col1, col2, col3) => {
+    col1.innerHTML = null;
+    col2.innerHTML = null;
+    col3.innerHTML = null;
     data.forEach(({ alt_description, urls: { small } }, idx) => {
-        let col = 0;
         let div = document.createElement("div");
         let img = document.createElement("img");
         let h3 = document.createElement("h3");
