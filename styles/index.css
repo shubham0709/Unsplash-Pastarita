@@ -1,0 +1,23 @@
+#append_images {
+    width: 90%;
+    display: flex;
+    gap: 30px;
+    margin: 0 auto;
+}
+
+#append_images>div {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    width: 33%;
+}
+
+.card {
+    width: 100%;
+    aspect-ratio: auto;
+}
+
+.card>img {
+    width: 100%;
+    aspect-ratio: auto;
+}
