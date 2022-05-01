@@ -32,8 +32,6 @@ let append = (data, col1, col2, col3) => {
         } else if (idx % 3 == 2) {
             col3.append(div)
         }
-
-
     })
 }
 
