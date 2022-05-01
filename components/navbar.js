@@ -3,12 +3,12 @@ let navbar = () => {
     <input type="text" id="query" placeholder="search photos here...">
 </div>
 <div id="categories">
-    <h3>Nature</h3>
-    <h3>Cars</h3>
-    <h3>Music</h3>
-    <h3>Cartoons</h3>
-    <h3>Technology</h3>
-    <h3>Marvels</h3>
+<h3 id='nature'>Nature</h3>
+    <h3 id='cars'>Cars</h3>
+    <h3 id='music'>Music</h3>
+    <h3 id='cartoons'>Cartoons</h3>
+    <h3 id='technology'>Technology</h3>
+    <h3 id='marvels'>Marvels</h3>
 </div>`;
 }
 export default navbar;

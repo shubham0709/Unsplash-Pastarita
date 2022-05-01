@@ -17,17 +17,33 @@ import { searchImages, append } from "./fetch.js";
 //         console.log("this is my error : " + err);
 //     }
 // }
+let col1 = document.getElementById("col1");
+let col2 = document.getElementById("col2");
+let col3 = document.getElementById("col3");
+const API = `UFL2ZB0V46ZXTSOtC1BAS1Y4l3ZUYNb_tKwI6GWrCAg`;
 
 let search = async (e) => {
     if (e.key === 'Enter') {
-        const API = `UFL2ZB0V46ZXTSOtC1BAS1Y4l3ZUYNb_tKwI6GWrCAg`;
         let query = document.getElementById("query").value;
         let data = await searchImages(API, query);
-        let col1 = document.getElementById("col1");
-        let col2 = document.getElementById("col2");
-        let col3 = document.getElementById("col3");
         append(data.results, col1, col2, col3);
     }
 }
+
+
 document.getElementById('query').addEventListener('keydown', search);
 
+let categories = document.getElementById("categories").children;
+console.log(categories);
+
+let searchByCategory = async (elem) => {
+    console.log(elem.id)
+    let query = elem.id;
+    let data = await searchImages(API, query);
+    append(data.results, col1, col2, col3);
+}
+for (let elem of categories) {
+    elem.addEventListener('click', () => {
+        searchByCategory(elem);
+    })
+}
